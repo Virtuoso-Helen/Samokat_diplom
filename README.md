@@ -1,10 +1,15 @@
-﻿[![Typing SVG](https://readme-typing-svg.demolab.com?font=arial+black&size=30&duration=2000&pause=1000&color=5DA7F7&multiline=true&random=true&width=460&lines=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F+%D1%82%D0%B5%D1%81%D1%82%D0%B0+%D0%BA+API)](https://git.io/typing-svg)
+## **Технические данные для работы:**
+1. [x] Для запуска тестов должны быть установлены пакеты **pytest** и **requests**
+2. [x] В файле **configuration.py** необходимо проверить и заменить **URL_SERVICE** на текущий актуальный https....сервер
+3. [x] Запуск всех тестов выполянется командой из Терминала **pytest new_order_test.py**
+ 
+ [![Typing SVG](https://readme-typing-svg.demolab.com?font=arial+black&size=30&duration=2000&pause=1000&color=5DA7F7&multiline=true&random=true&width=460&lines=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F+%D1%82%D0%B5%D1%81%D1%82%D0%B0+%D0%BA+API)](https://git.io/typing-svg)
 
 Автоматизируем сценарий, который подготовили коллеги-тестировщики:
 1. [x] Клиент создает заказ.
 2. [x] Проверяется, что по треку заказа можно получить данные о заказе.
 
-## **Шаги**
+**Шаги**
 
 1. [x] Выполнить запрос на создание заказа.
 2. [x] Сохранить номер трека заказа.
@@ -22,15 +27,11 @@
 
 **Ответ:**
 
-
-    SELECT track AS TrackID,
-        CASE 
-         WHEN finished = true THEN 2 
-         WHEN cancelled = true THEN -1 
-         WHEN "inDelivery" = true THEN 1 
-         ELSE 0 
-        END AS Status 
-    FROM "Orders";
+    SELECT c.login, COUNT(o.track) AS "inDeliveryCount" 
+    FROM "Couriers" AS c 
+    JOIN "Orders" AS o ON c.id = o."courierId" 
+    WHERE o."inDelivery" = true 
+    GROUP BY c.login;
 
 
 **Задание 2**
@@ -49,8 +50,11 @@
 
 **Ответ:**
 
-    SELECT c.login, COUNT(o.track) AS "inDeliveryCount" 
-    FROM "Couriers" AS c 
-    LEFT JOIN "Orders" AS o ON c.id = o."courierId" 
-    WHERE o."inDelivery" = true 
-    GROUP BY c.login;
+    SELECT track AS TrackID,
+        CASE 
+         WHEN finished = true THEN 2 
+         WHEN cancelled = true THEN -1 
+         WHEN "inDelivery" = true THEN 1 
+         ELSE 0 
+        END AS Status 
+    FROM "Orders";
