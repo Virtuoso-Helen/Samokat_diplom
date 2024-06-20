@@ -1,7 +1,7 @@
 ## **Технические данные для работы:**
 1. [x] Для запуска тестов должны быть установлены пакеты **pytest** и **requests**
 2. [x] В файле **configuration.py** необходимо проверить и заменить **URL_SERVICE** на текущий актуальный https....сервер
-3. [x] Запуск всех тестов выполянется командой из Терминала **pytest new_order_test.py**
+3. [x] Запуск всех тестов выполянется командой из Терминала **pytest**
  
  [![Typing SVG](https://readme-typing-svg.demolab.com?font=arial+black&size=30&duration=2000&pause=1000&color=5DA7F7&multiline=true&random=true&width=460&lines=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F+%D1%82%D0%B5%D1%81%D1%82%D0%B0+%D0%BA+API)](https://git.io/typing-svg)
 
